@@ -1,0 +1,9 @@
+@use '../../styles/breakpoints.scss';
+
+.footer {
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+  
+  background: var(--primary);
+  color: var(--inverted-text-color);
+}

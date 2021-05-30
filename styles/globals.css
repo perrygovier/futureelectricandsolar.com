@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--text-color);
 }
 
 a {
@@ -17,4 +18,6 @@ a {
 
 :root {
   --primary: #049648;
+  --text-color: #111;
+  --inverted-text-color: white;
 }
