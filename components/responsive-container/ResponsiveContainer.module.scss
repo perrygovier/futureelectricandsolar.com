@@ -1,0 +1,20 @@
+@import '../../styles/breakpoints.scss';
+
+.ui-container {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: $screenSm) {
+    max-width: $screenSm;
+  }
+
+  @media (min-width: $screenMd) {
+    max-width: $screenMd;
+  }
+
+  @media (min-width: $screenLg) {
+    max-width: $screenLg;
+  }
+}
