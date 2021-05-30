@@ -8,13 +8,17 @@ import ResponsiveContainer from '../responsive-container/ResponsiveContainer';
 import Email from './email.svg';
 import Facebook from './facebook.svg';
 import Instagram from './instagram.svg'
+import React from 'react';
+import Button from '../button/Button';
 
-export default function Home() {
+export default function Header() {
   return (
     <header className={styles.header}>
       <ResponsiveContainer As="nav">
-        <Image src="/img/future-electric-and-solar.png" width={800} height={297}></Image>
-        <ul>
+        <div className={styles.logoWrapper}>
+          <Image src="/img/future-electric-and-solar.png" width={400} height={149}/>
+        </div>
+        <ul className={styles.primaryNav}>
           <li>
             {/* <Link> */}
               <a href="/about">About Us</a>
@@ -35,22 +39,26 @@ export default function Home() {
               <a href="/contact">Contact</a>
             {/* </Link> */}
           </li>
-          <li className="social">
+        </ul>
+        <ul className={styles.social}>
+          <li>
             <a href="https://www.facebook.com/futureelectricandsolar" target="_blank" rel="noopener">
               <Facebook/>
             </a>
           </li>
-          <li className="social">
+          <li>
             <a href="https://www.instagram.com/futureelectricandsolar" target="_blank" rel="noopener">
               <Instagram/>
             </a>
           </li>
-          <li className="social">
+          <li>
             <a href="mailto:mark@futureelectricandsolar.com">
               <Email/>
             </a>
           </li>
         </ul>
+
+        <Button>Free Quote</Button>
       </ResponsiveContainer>
     </header>
 

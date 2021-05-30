@@ -1,5 +1,50 @@
 @use '../../styles/breakpoints.scss';
 
 .header {
-  
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+
+  .logoWrapper {
+    margin-inline-end: 2rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  ul {
+    flex: 1;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    li {
+      text-align: center;
+    }
+  }
+
+  .primaryNav {
+    flex: 1;
+    justify-content: space-between;
+
+    a {
+      padding: .5rem;
+    }
+  }
+
+  .social {
+    flex: 0 0 160px;
+    justify-content: center;
+
+    a {
+      padding: .5rem
+    }
+
+    svg {
+      height: 1.5rem;
+    }
+  }
 }
