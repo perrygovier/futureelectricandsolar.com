@@ -6,4 +6,41 @@
   
   background: var(--primary);
   color: var(--inverted-text-color);
+
+  section {
+    display: flex;
+    gap: 8vw;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .row {
+    display: block;
+
+    label  {
+      display: block;
+      font-weight: 300;
+    }
+
+    input {
+      display: block;
+      padding: .5rem;
+      font-size: 1.2rem;
+      min-width: max(280px, 30vw);
+
+    }
+  }
 }
