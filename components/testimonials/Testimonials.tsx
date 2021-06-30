@@ -1,4 +1,4 @@
-import styles from './testimonials.module.scss';
+import styles from './Testimonials.module.scss';
 
 import Star from '../../icons/star.svg';
 
