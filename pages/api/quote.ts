@@ -1,10 +1,8 @@
 import FormData from 'form-data';
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    // Process a POST request
-  } else {
-    // Handle any other HTTP method
+  if (req.method !== 'POST') {
+    return res.status(405);
   }
 
   var formId = '1FAIpQLSeJEcRt9bqOGR3pFLL4wfjI4EKBQZjPcDC5fSkPZGnS0WnJag';
@@ -17,10 +15,10 @@ export default async function handler(req, res) {
 
   const formData = new FormData();
   Object.entries({ 
-    [fields.name]: 'Perry Govier',
-    [fields.phone]: '612-208-9384',
-    [fields.email]: 'test@example.com',
-    [fields.message]: 'Testing API Integration',
+    [fields.name]: req.body.name,
+    [fields.phone]: req.body.phone,
+    [fields.email]: req.body.email,
+    [fields.message]: req.body.message,
   }).forEach(([key, value]) => {
     formData.append(key, value);
   });
@@ -29,7 +27,6 @@ export default async function handler(req, res) {
       method: 'post',
       body: formData as any,
     })
-    console.log();
     res.status(response.status).json({ok: response.status === 200, message: response.statusText})
   } catch {
     res.status(500).json({ ok: false, message: 'Unable to submit form' })

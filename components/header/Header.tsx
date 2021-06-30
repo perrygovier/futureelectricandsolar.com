@@ -5,9 +5,9 @@ import styles from './Header.module.scss';
 
 import ResponsiveContainer from '../responsive-container/ResponsiveContainer';
 
-import Email from './email.svg';
-import Facebook from './facebook.svg';
-import Instagram from './instagram.svg'
+import Email from '../../icons/email.svg';
+import Facebook from '../../icons/facebook.svg';
+import Instagram from '../../icons/instagram.svg'
 import React from 'react';
 import Button from '../button/Button';
 

@@ -5,16 +5,22 @@ interface Props extends PropsWithChildren<any>{
   As?: 'button' | 'a';
 }
 
-const ResponsiveContainer: React.FC<Props> = ({
+const Button: React.FC<Props> = ({
   As = 'button',
   ...props
 }) => {
+  let className = styles['ui-button'];
+  if (props.className) {
+    className += ` ${props.className}`;
+    delete props.className;
+  }
+
   return (
     <As
-      className={`${styles['ui-button']} ${props.className || ''}`}
+      className={className}
       {...props}
     />
   );
 };
 
-export default ResponsiveContainer;
+export default Button;

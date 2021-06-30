@@ -1,15 +1,21 @@
-@use '../../styles/breakpoints.scss';
+@import '../../styles/breakpoints.scss';
 
 .footer {
-  padding-block-start: 2rem;
-  padding-block-end: 2rem;
+  padding-block-start: 7rem;
+  padding-block-end: 7rem;
   
   background: var(--primary);
   color: var(--inverted-text-color);
+  clear: both;
 
   section {
     display: flex;
-    gap: 8vw;
+    gap: min(8vw, 100px);
+    margin-block-end: 5rem;
+
+    @media (max-width: $screenXs) {
+      flex-direction: column;
+    }
   }
 
   .content {
@@ -19,6 +25,7 @@
   h2 {
     font-size: 3rem;
     font-weight: 400;
+    margin-block-start: 0;
   }
 
   p {
@@ -27,20 +34,98 @@
     font-weight: 300;
   }
 
+  form {
+    margin-block-start: .6rem;
+  }
+
   .row {
     display: block;
+    margin-bottom: 2rem;
 
     label  {
-      display: block;
       font-weight: 300;
     }
 
-    input {
+    input,
+    textarea {
+      margin-block-start: .5rem;
       display: block;
       padding: .5rem;
       font-size: 1.2rem;
-      min-width: max(280px, 30vw);
-
+      min-width: max(280px, min(30vw, 550px));
+      border: none;
+      transition: .2s box-shadow ease-out;
+    
+      &:hover {
+        box-shadow: 
+          inset 0 0 20px rgba(255, 255, 255, .2),
+          0 2px 8px rgba(0, 0, 0, .2);
+      }
+    
+      &:active,
+      &:focus {
+        box-shadow: 
+          inset 0 0 20px rgba(0, 0, 0, .2);
+          outline: none;
+      }
     }
+
+    .error {
+      color: rgb(165, 7, 7);
+      margin-left: 1rem;
+    }
+  }
+  
+  .social {
+    color: black;
+    margin: 1rem auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      padding: .5rem;
+
+      path,
+      rect {
+        transition: .2s all;
+      }
+
+      &:hover {
+        path {
+          fill: white;
+        }
+
+        rect {
+          stroke: white;
+
+          + path {
+            fill: transparent;
+            stroke: white;
+          }
+        }
+
+      }
+    }
+
+    svg {
+      height: 1.5rem;
+    }
+  }
+
+  .copyright {
+    text-align: center;
+  }
+}
+
+.btn {
+  background: var(--inverted-text-color);
+  color: var(--primary);
+  padding: 1.5rem 2rem;
+
+  &:disabled {
+    background: #ccc;
   }
 }

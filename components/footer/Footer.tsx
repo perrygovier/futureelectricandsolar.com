@@ -1,10 +1,21 @@
-import React from 'react';
+import Button from 'components/button/Button';
+import React, { useState } from 'react';
 import ResponsiveContainer from '../responsive-container/ResponsiveContainer';
 import styles from './Footer.module.scss';
 
+import Email from '../../icons/email.svg';
+import Facebook from '../../icons/facebook.svg';
+import Instagram from '../../icons/instagram.svg'
+
 export default function Footer() {
+  const [phoneInvalid, setPhoneInvalid] = useState(false);
+  const [messageSending, setMessageSending] = useState(false);
+  const [messageRecieved, setMssageRecieved] = useState(false);
+  const [statusMessage, setStatusMessage] = useState(null);
+
   const handleFreeQuoteSubmit = async event => {
     event.preventDefault();
+    setMessageSending(true)
 
     const options = {
       body: JSON.stringify({
@@ -18,6 +29,30 @@ export default function Footer() {
       },
       method: 'POST'
     }
+
+    try {
+      const response = await fetch('/api/quote', options)
+      // console.log(response);
+
+      setMssageRecieved(response.ok);
+      setStatusMessage('Message Recieved! We\'ll be in touch soon.');
+    } catch {
+      setMssageRecieved(false);
+      setStatusMessage('Message not sent. Please try again.')
+    }
+    setMessageSending(false)
+  }
+
+  const formatPhonerequired = event => {
+    var cleaned = ('' + event.target.value).replace(/\D/g, '');
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    
+    if (!match && cleaned.length !== 10) {
+      return setPhoneInvalid(true);
+    }
+
+    event.target.value = [match[2], '-', match[3], '-', match[4]].join('');
+    setPhoneInvalid(false);
   }
 
   return (
@@ -33,21 +68,47 @@ export default function Footer() {
             <input type="text" id="name" name="name" autoComplete="name" required/>
           </div>
           <div className={styles.row}>
-            <label htmlFor="phone">Phone</label>
-            <input type="text" id="phone" name="phone" autoComplete="tel" required/>
+            <label htmlFor="phone">Phone *</label> {phoneInvalid && <span className={styles.error}>Please provide a 10 digit number. ex: 608-123-4567</span>}
+            <input type="tel" id="phone" name="phone" autoComplete="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onBlur={formatPhonerequired}/>
           </div>
           <div className={styles.row}>
-            <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email" autoComplete="email" required/>
+            <label htmlFor="email">Email *</label>
+            <input type="email" id="email" name="email" autoComplete="email" required/>
           </div>
           <div className={styles.row}>
-            <label htmlFor="message">Message</label>
-            <input type="text" id="message" name="message" placeholder="I would like a free quote!" required/>
+            <label htmlFor="message">Message *</label>
+            <textarea rows={4} id="message" name="message" placeholder="I would like a free quote!" required/>
           </div>
           <div className={styles.row}>
-            <button type="submit">Send</button>
+            {messageRecieved ?
+              <h3>{statusMessage}</h3> :
+              <>
+                <Button type="submit" className={styles.btn} disabled={messageSending}>{messageSending ? 'Sending' : 'Send'}</Button>
+                <span>{statusMessage}</span>
+              </>
+            }
           </div>
         </form>
+      </ResponsiveContainer>
+      <ResponsiveContainer>
+        <ul className={styles.social}>
+          <li>
+            <a href="https://www.facebook.com/futureelectricandsolar" target="_blank" rel="noopener">
+              <Facebook/>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/futureelectricandsolar" target="_blank" rel="noopener">
+              <Instagram/>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:mark@futureelectricandsolar.com">
+              <Email/>
+            </a>
+          </li>
+        </ul>
+        <div className={styles.copyright}>Copyright 2020 - Electric Future LLC</div>
       </ResponsiveContainer>
     </footer>
   );
