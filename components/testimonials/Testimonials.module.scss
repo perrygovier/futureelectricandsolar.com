@@ -1,0 +1,41 @@
+@import '../../styles/breakpoints.scss';
+
+.testimonials {
+  background: #FBFBF8;
+  color: #1A1818;
+  padding-block-start: 4rem;
+  padding-block-end: 4rem;
+  text-align: center;
+
+  figure {
+    max-width: 50rem;
+    margin: 0 auto;
+    display: block;
+  }
+
+  blockquote {
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 120%;
+    }
+  }
+
+  figcaption {
+    font-size: 1.5rem;
+    margin-block-start: 1rem;
+  }
+
+  address {
+    margin-block-start: .5rem;
+  }
+}
+
+.stars {
+  margin: 2rem auto 0;
+  display: flex;
+  width: 100%;
+  max-width: 390px;
+  justify-content: space-between;
+  align-items: center;
+}

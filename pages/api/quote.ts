@@ -1,6 +1,12 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import FormData from 'form-data';
 
-export default async function handler(req, res) {
+type Response = {
+  ok: boolean,
+  message: string,
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
   if (req.method !== 'POST') {
     return res.status(405);
   }

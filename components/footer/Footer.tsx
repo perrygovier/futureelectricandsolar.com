@@ -34,6 +34,10 @@ export default function Footer() {
       const response = await fetch('/api/quote', options)
       // console.log(response);
 
+      if (!response.ok) {
+        throw('Response not ok');
+      }
+
       setMssageRecieved(response.ok);
       setStatusMessage('Message Recieved! We\'ll be in touch soon.');
     } catch {
