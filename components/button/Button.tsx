@@ -9,6 +9,7 @@ const Button: React.FC<Props> = ({
   As = 'button',
   ...props
 }) => {
+
   let className = styles['ui-button'];
   if (props.className) {
     className += ` ${props.className}`;
@@ -16,10 +17,7 @@ const Button: React.FC<Props> = ({
   }
 
   return (
-    <As
-      className={className}
-      {...props}
-    />
+    <As className={className} {...props} />
   );
 };
 

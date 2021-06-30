@@ -11,6 +11,8 @@
   ul {
     background: var(--primary);
     color: var(--inverted-text-color);
+    margin-inline-start: -1rem;
+    margin-inline-end: -1rem;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -19,7 +21,7 @@
 
     li  {
       width: 124px;
-      margin-block-start: -4rem;
+      margin-block-start: -6rem;
     }
 
     svg {
@@ -68,7 +70,17 @@
     font-weight: 400;
   }
 
+  p {
+    line-height: 1.8em;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
   button + button {
     margin-inline-start: 1rem;
   }
+}
+
+.stats {
+  margin-block-start: 8rem;
 }

@@ -9,17 +9,15 @@ const ResponsiveContainer: React.FC<Props> = ({
   As = 'div',
   ...props
 }) => {
+
   let className = styles['ui-container'];
   if (props.className) {
     className += ` ${props.className}`;
     delete props.className;
   }
-  
+
   return (
-    <As
-      className={className}
-      {...props}
-    />
+    <As className={className} {...props} />
   );
 };
 
