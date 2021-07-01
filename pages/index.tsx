@@ -8,6 +8,7 @@ import Sun from '../icons/sun.svg';
 import Flash from '../icons/flash.svg';
 import House from '../icons/home.svg';
 import Business from '../icons/business.svg';
+import BatteryCharging from '../icons/battery-charging.svg';
 
 import HeaderImage from '../public/img/home/header-image.jpg';
 import Mark from '../public/img/home/mark.jpg';
@@ -21,16 +22,16 @@ export default function Home() {
         <Image src={HeaderImage} priority={true} placeholder="blur" layout="responsive" width={1432} height={603}/>
         <ul>
           <li>
-            <Lightbulb/>
-            <span>Electrical Services</span>
-          </li>
-          <li>
             <Sun/>
             <span>Solar Panels</span>
           </li>
           <li>
             <Flash/>
             <span>Electric Vehicle Charging</span>
+          </li>
+          <li>
+            <BatteryCharging/>
+            <span>Battery Storage</span>
           </li>
           <li>
             <House/>
