@@ -6,10 +6,6 @@ import Link from 'next/link'
 // Configure your site's access point here
 export const apiEndpoint = 'https://futureelectricandsolar.prismic.io/api/v2'
 
-// -- Access Token if the repository is not public
-// Generate a token in your dashboard and configure it here if your repository is private
-export const accessToken = ''
-
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
@@ -36,15 +32,13 @@ export const customLink = (type, element, content, children, index) => (
 
 // Client method to query documents from the Prismic repo
 export const Client = (req = null) => (
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken))
+  Prismic.client(apiEndpoint, createClientOptions(req))
 )
 
-const createClientOptions = (req = null, prismicAccessToken = null) => {
+const createClientOptions = (req = null) => {
   const reqOption = req ? { req } : {}
-  const accessTokenOption = prismicAccessToken ? { accessToken: prismicAccessToken } : {}
   return {
     ...reqOption,
-    ...accessTokenOption,
   }
 }
 
