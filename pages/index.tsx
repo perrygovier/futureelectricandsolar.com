@@ -1,6 +1,8 @@
-import ResponsiveContainer from 'components/responsive-container/ResponsiveContainer';
 import Image from 'next/image'
 import React from 'react';
+
+import ResponsiveContainer from 'components/responsive-container/ResponsiveContainer';
+import { Client } from 'utils/prismicHelpers'
 import styles from '../styles/pages/Home.module.scss'
 
 import Lightbulb from '../icons/lightbulb.svg';
@@ -15,7 +17,11 @@ import Mark from '../public/img/home/mark.jpg';
 import Button from 'components/button/Button';
 import Testimonials from 'components/testimonials/Testimonials';
 
-export default function Home() {
+export default function Homepage({ doc }) {
+  if (!doc?.data) {
+    return null;
+  }
+
   return (
     <div className={styles.container}>
       <ResponsiveContainer As="header" className={styles.hero}>
@@ -66,4 +72,24 @@ export default function Home() {
       <Testimonials/>
     </div>
   )
+}
+
+export async function getStaticProps({ preview = null, previewData = {} }) {
+
+  const { ref } = previewData
+
+  const client = Client()
+
+  const doc = await client.getSingle('homepage', ref ? { ref } : null) || {}
+  // const menu = await client.getSingle('menu', ref ? { ref } : null) || {}
+
+  console.log(doc)
+
+  return {
+    props: {
+      doc,
+      // menu,
+      preview
+    }
+  }
 }
