@@ -74,7 +74,7 @@ export default function Homepage({ doc }) {
   )
 }
 
-export async function getStaticProps({ preview = null, previewData = {} }) {
+export async function getStaticProps({ preview = null, previewData = {ref: undefined} }) {
 
   const { ref } = previewData
 
