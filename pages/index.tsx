@@ -54,7 +54,7 @@ export default function Homepage({ doc }) {
       <ResponsiveContainer As="main" className={styles.main}>
         <div className="twoCol">
           <div className="col">
-          <RichText render={doc.data['introduction_-_why_fes']} />
+          <RichText render={doc.data['introduction_why']} />
           <Button>Read More</Button>
           </div>
           <div className="col">
@@ -62,9 +62,8 @@ export default function Homepage({ doc }) {
           </div>
         </div>
         <div className={`center ${styles.stats}`}>
-          <h1>How Solar Power Can Work For You</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
+          <RichText render={doc.data['introduction_what']} />
+
           <Button>Read More</Button>
           <Button>Contact us for Your Free Quote</Button>
         </div>
@@ -83,7 +82,7 @@ export async function getStaticProps({ preview = null, previewData = {ref: undef
   const doc = await client.getSingle('homepage', ref ? { ref } : null) || {}
   // const menu = await client.getSingle('menu', ref ? { ref } : null) || {}
 
-  console.log(doc)
+  // console.log(doc)
 
   return {
     props: {
