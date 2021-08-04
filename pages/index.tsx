@@ -17,13 +17,15 @@ import HeaderImage from '../public/img/home/header-image.jpg';
 import Mark from '../public/img/home/mark.jpg';
 import Button from 'components/button/Button';
 import Testimonials from 'components/testimonials/Testimonials';
+import Layout from 'components/layout';
 
-export default function Homepage({ doc }) {
+export default function Homepage({ doc, menu }) {
   if (!doc?.data) {
     return null;
   }
 
   return (
+    <Layout data={{...menu}}>
     <div className={styles.container}>
       <ResponsiveContainer As="header" className={styles.hero}>
         <Image src={HeaderImage} priority={true} placeholder="blur" layout="responsive" width={1432} height={603}/>
@@ -68,8 +70,9 @@ export default function Homepage({ doc }) {
           <Button>Contact us for Your Free Quote</Button>
         </div>
       </ResponsiveContainer>
-      <Testimonials/>
+      {/* <Testimonials/> */}
     </div>
+    </Layout>
   )
 }
 
@@ -80,14 +83,14 @@ export async function getStaticProps({ preview = null, previewData = {ref: undef
   const client = Client()
 
   const doc = await client.getSingle('homepage', ref ? { ref } : null) || {}
-  // const menu = await client.getSingle('menu', ref ? { ref } : null) || {}
+  const menu = await client.getSingle('homepage', ref ? { ref } : null) || {}
 
-  // console.log(doc)
+  // console.log(menu)
 
   return {
     props: {
       doc,
-      // menu,
+      menu,
       preview
     }
   }
