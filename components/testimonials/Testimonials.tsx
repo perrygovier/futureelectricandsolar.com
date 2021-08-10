@@ -2,16 +2,16 @@ import styles from './Testimonials.module.scss';
 
 import Star from '../../icons/star.svg';
 
-export default function Testimonials() {
+export default function Testimonials({testimonials}) {
   return (
     <div className={styles.testimonials}>
       <figure>
         <blockquote>
-          <p>"Mark was fantastic to work with. Quality and attention to detail are his default."</p>
+          <p>"{testimonials[0].quote}"</p>
         </blockquote>
         <figcaption>
-          - Todd Patterson,
-          <address>Reedsburg, WI</address>
+          - {testimonials[0].person},
+          <address>{testimonials[0].location}</address>
         </figcaption>
 
         <div className={styles.stars}>

@@ -9,7 +9,7 @@ import Testimonials from './testimonials/Testimonials'
 
 export default function Layout({ children, themeContent }) {
   const { isPreview } = useRouter();
-  console.log(themeContent)
+  // console.log(themeContent)
   return (
     <>
       <Head>
@@ -26,7 +26,7 @@ export default function Layout({ children, themeContent }) {
 
       {children}
 
-      <Testimonials/>
+      <Testimonials testimonials={themeContent.data.testimonials}/>
       <Footer quoteIntro={themeContent.data.footer_free_quote_intro} social={themeContent.data.social_links}/>
       <PrismicScript />
     </>
