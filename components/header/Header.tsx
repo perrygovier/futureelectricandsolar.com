@@ -1,29 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
+// import React from 'react';
 
 import styles from './Header.module.scss';
 
 import ResponsiveContainer from '../responsive-container/ResponsiveContainer';
-
-import Email from '../../icons/email.svg';
-import Facebook from '../../icons/facebook.svg';
-import Instagram from '../../icons/instagram.svg'
-import React from 'react';
 import Button from '../button/Button';
+import { getSocialIcon } from 'utils/iconHelper';
 
 export default function Header({nav, social}) {
   // console.log('data', nav, social)
-
-  const getSocialIcon = iconName => {
-    // console.log(iconName)
-    switch(iconName) {
-      case 'Instagram':
-        return <Instagram/>
-      case 'Email':
-        return <Email/>
-    }
-    return <Facebook/>
-  }
 
   return (
     <header className={styles.header}>

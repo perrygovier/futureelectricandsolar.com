@@ -27,7 +27,7 @@ export default function Layout({ children, themeContent }) {
       {children}
 
       <Testimonials/>
-      <Footer/>
+      <Footer quoteIntro={themeContent.data.footer_free_quote_intro} social={themeContent.data.social_links}/>
       <PrismicScript />
     </>
   )

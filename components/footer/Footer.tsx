@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import ResponsiveContainer from '../responsive-container/ResponsiveContainer';
 import styles from './Footer.module.scss';
 
-import Email from '../../icons/email.svg';
-import Facebook from '../../icons/facebook.svg';
-import Instagram from '../../icons/instagram.svg'
+import { RichText } from 'prismic-reactjs';
+import { getSocialIcon } from 'utils/iconHelper';
 
-export default function Footer() {
+export default function Footer({quoteIntro, social}) {
   const year = new Date().getFullYear();
   const [phoneInvalid, setPhoneInvalid] = useState(false);
   const [messageSending, setMessageSending] = useState(false);
@@ -64,8 +63,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <ResponsiveContainer As="section">
         <div className={'content'}>
-          <h2>Get Your Free Quote Today!</h2>
-          <p>It has never been a better time to invest in solar. Use this form to apply for a Free Quote and we'll be in touch shortly to discuss your options and get you a detailed report with the information necessar to decide what energy solution works best for you and your home.</p>
+          <RichText render={quoteIntro} />
         </div>
         <form className={styles.form} onSubmit={handleFreeQuoteSubmit}>
           <div className={styles.row}>
@@ -97,21 +95,13 @@ export default function Footer() {
       </ResponsiveContainer>
       <ResponsiveContainer>
         <ul className={styles.social}>
-          <li>
-            <a href="https://www.facebook.com/futureelectricandsolar" target="_blank" rel="noopener">
-              <Facebook/>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/futureelectricandsolar" target="_blank" rel="noopener">
-              <Instagram/>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:mark@futureelectricandsolar.com">
-              <Email/>
-            </a>
-          </li>
+          {social.map(socialItem => (
+            <li key={socialItem.url}>
+              <a href={socialItem.url} target="_blank" rel="noopener">
+                {getSocialIcon(socialItem.icon)}
+              </a>
+            </li>
+          ))}
         </ul>
         <div className={styles.copyright}>Copyright {year} - Electric Future LLC</div>
       </ResponsiveContainer>
