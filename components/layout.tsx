@@ -7,9 +7,9 @@ import Header from './header/Header'
 import MetaHead from './MetaHead'
 import Testimonials from './testimonials/Testimonials'
 
-export default function Layout({ children, data }) {
+export default function Layout({ children, themeContent }) {
   const { isPreview } = useRouter();
-  // console.log(data)
+  console.log(themeContent)
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ export default function Layout({ children, data }) {
       {isPreview ? (
         <a className="prismic-preview-exit" href="/api/exit-preview">Exit Preview</a>
       ) : null}
-      <Header/>
+      <Header nav={themeContent.data.primary_nav} social={themeContent.data.social_links}/>
 
       {children}
 

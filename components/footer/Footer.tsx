@@ -8,6 +8,7 @@ import Facebook from '../../icons/facebook.svg';
 import Instagram from '../../icons/instagram.svg'
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   const [phoneInvalid, setPhoneInvalid] = useState(false);
   const [messageSending, setMessageSending] = useState(false);
   const [messageRecieved, setMssageRecieved] = useState(false);
@@ -112,7 +113,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-        <div className={styles.copyright}>Copyright 2020 - Electric Future LLC</div>
+        <div className={styles.copyright}>Copyright {year} - Electric Future LLC</div>
       </ResponsiveContainer>
     </footer>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 import { RichText } from 'prismic-reactjs'
 
 import ResponsiveContainer from 'components/responsive-container/ResponsiveContainer';
-import { Client } from 'utils/prismicHelpers'
+import { Client, getPrismicPageContent } from 'utils/prismicHelpers'
 import styles from '../styles/pages/Home.module.scss'
 
 import Lightbulb from '../icons/lightbulb.svg';
@@ -19,13 +19,13 @@ import Button from 'components/button/Button';
 import Testimonials from 'components/testimonials/Testimonials';
 import Layout from 'components/layout';
 
-export default function Homepage({ doc, menu }) {
+export default function Homepage({ doc, themeContent }) {
   if (!doc?.data) {
     return null;
   }
 
   return (
-    <Layout data={{...menu}}>
+    <Layout themeContent={{...themeContent}}>
     <div className={styles.container}>
       <ResponsiveContainer As="header" className={styles.hero}>
         <Image src={HeaderImage} priority={true} placeholder="blur" layout="responsive" width={1432} height={603}/>
@@ -77,21 +77,5 @@ export default function Homepage({ doc, menu }) {
 }
 
 export async function getStaticProps({ preview = null, previewData = {ref: undefined} }) {
-
-  const { ref } = previewData
-
-  const client = Client()
-
-  const doc = await client.getSingle('homepage', ref ? { ref } : null) || {}
-  const menu = await client.getSingle('homepage', ref ? { ref } : null) || {}
-
-  // console.log(menu)
-
-  return {
-    props: {
-      doc,
-      menu,
-      preview
-    }
-  }
+  return await getPrismicPageContent(preview, previewData);
 }
