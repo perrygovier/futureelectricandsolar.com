@@ -3,10 +3,9 @@ import React from 'react';
 import { RichText } from 'prismic-reactjs'
 
 import ResponsiveContainer from 'components/responsive-container/ResponsiveContainer';
-import { Client, getPrismicPageContent } from 'utils/prismicHelpers'
+import { getPrismicPageContent } from 'utils/prismicHelpers'
 import styles from '../styles/pages/Home.module.scss'
 
-import Lightbulb from '../icons/lightbulb.svg';
 import Sun from '../icons/sun.svg';
 import Flash from '../icons/flash.svg';
 import House from '../icons/home.svg';
@@ -16,7 +15,6 @@ import BatteryCharging from '../icons/battery-charging.svg';
 import HeaderImage from '../public/img/home/header-image.jpg';
 import Mark from '../public/img/home/mark.jpg';
 import Button from 'components/button/Button';
-import Testimonials from 'components/testimonials/Testimonials';
 import Layout from 'components/layout';
 
 export default function Homepage({ doc, themeContent }) {
@@ -53,14 +51,14 @@ export default function Homepage({ doc, themeContent }) {
         </ul>
       </ResponsiveContainer>
         
-      <ResponsiveContainer As="main" className={styles.main}>
+      <ResponsiveContainer As="main">
         <div className="twoCol">
           <div className="col">
           <RichText render={doc.data['introduction_why']} />
           <Button>Read More</Button>
           </div>
           <div className="col">
-            <Image src={Mark} layout="responsive" width={711} height={399} ></Image>
+            <Image src={Mark} layout="responsive" width={711} height={399} />
           </div>
         </div>
         <div className={`center ${styles.stats}`}>
@@ -77,5 +75,5 @@ export default function Homepage({ doc, themeContent }) {
 }
 
 export async function getStaticProps({ preview = null, previewData = {ref: undefined} }) {
-  return await getPrismicPageContent(preview, previewData);
+  return await getPrismicPageContent('homepage', preview, previewData);
 }

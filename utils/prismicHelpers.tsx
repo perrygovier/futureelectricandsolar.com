@@ -42,12 +42,12 @@ const createClientOptions = (req = null) => {
   }
 }
 
-export const getPrismicPageContent = async (preview, previewData) => {
+export const getPrismicPageContent = async (page:string, preview, previewData) => {
   const { ref } = previewData
 
   const client = Client()
 
-  const doc = await client.getSingle('homepage', ref ? { ref } : null) || {}
+  const doc = await client.getSingle(page, ref ? { ref } : null) || {}
   const themeContent = await client.getSingle('site_theme', ref ? { ref } : null) || {}
 
   // console.log(menu)

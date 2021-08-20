@@ -28,10 +28,50 @@ a {
   > * {
     flex: 50%;
   }
+  
+  &.narrow {
+    max-width: 920px;
+    margin: 0 auto;
+  }
 }
 
 .center {
   text-align: center;
+}
+
+.blueContent {
+  background: rgba(160, 190, 210, .3);
+  padding: 1em 2em;
+  margin-block-end: 5rem;
+  color: #515253;
+  font-weight: 400;
+
+}
+
+main, .main {
+  padding-block-start: 5rem;
+  padding-block-end: 5rem;
+
+  h1 {
+    font-size: 3.5rem;
+    color: var(--primary);
+  }
+
+  h2 {
+    color: #DAB15F;
+    font-size: 3.125rem;
+    font-weight: 400;
+  }
+
+  p, li {
+    line-height: 1.8em;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  button + button {
+    margin-inline-start: 1rem;
+  }
 }
 
 .prismic-preview-exit {
