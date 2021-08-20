@@ -8,7 +8,7 @@ import styles from '../styles/pages/Home.module.scss'
 
 import Layout from 'components/layout';
 
-export default function About({ doc, themeContent }) {
+export default function Services({ doc, themeContent }) {
   if (!doc?.data) {
     return null;
   }
@@ -17,21 +17,20 @@ export default function About({ doc, themeContent }) {
     <Layout themeContent={{...themeContent}}>
     <div className={styles.container}>
       <ResponsiveContainer As="header" className={styles.hero}>
-      {doc.data['team_photo'] && <Image src={doc.data['team_photo'].url} priority={true} layout="responsive" width={1315} height={348}/>}
+      {doc.data['header_photo'] && <Image src={doc.data['header_photo'].url} priority={true} layout="responsive" width={1315} height={348}/>}
       </ResponsiveContainer>
         
       <ResponsiveContainer As="main">
-        <h1 className="center">About</h1>
-        <div className="blueContent">
-          <RichText render={doc.data['about_intro']} />
-        </div>
-        <div className="twoCol narrow">
-          <div className="col">
-            {doc.data['mark_photo'] && <Image src={doc.data['mark_photo'].url} layout="responsive" width={340} height={454} />}
-          </div>
-          <div className="col">
-            <RichText render={doc.data['about_mark']} />
-          </div>
+        <h1 className="center">Services</h1>
+
+        <div className="twoCol">
+          {doc.data['services'].map(service => (
+            <div className="col blueContent" key={service.name}>
+              <h3 className="center">{service.name}</h3>
+              {service.photo && <Image src={service.photo.url} layout="responsive" width={645} height={238} />}
+              <RichText render={service.description} />
+            </div>
+          ))}
         </div>
       </ResponsiveContainer>
     </div>
@@ -40,5 +39,5 @@ export default function About({ doc, themeContent }) {
 }
 
 export async function getStaticProps({ preview = null, previewData = {ref: undefined} }) {
-  return await getPrismicPageContent('about', preview, previewData);
+  return await getPrismicPageContent('services', preview, previewData);
 }

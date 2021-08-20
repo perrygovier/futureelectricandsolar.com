@@ -51,7 +51,7 @@ export default function Homepage({ doc, themeContent }) {
         </ul>
       </ResponsiveContainer>
         
-      <ResponsiveContainer As="main">
+      <ResponsiveContainer As="main" className={styles.main}>
         <div className="twoCol">
           <div className="col">
           <RichText render={doc.data['introduction_why']} />

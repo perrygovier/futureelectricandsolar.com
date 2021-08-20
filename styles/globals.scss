@@ -1,5 +1,8 @@
+@import './breakpoints.scss';
+
 :root {
   --primary: #049648;
+  --secondary: #DAB15F;
   --text-color: #111;
   --inverted-text-color: white;
 }
@@ -22,16 +25,17 @@ a {
 }
 
 .twoCol {
-  display: flex;
+  display: grid;
   gap: 2rem;
-
-  > * {
-    flex: 50%;
-  }
+  grid-template-columns: 1fr 1fr;
   
   &.narrow {
     max-width: 920px;
     margin: 0 auto;
+  }
+
+  @media (max-width: $screenXs) {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -49,18 +53,24 @@ a {
 }
 
 main, .main {
-  padding-block-start: 5rem;
   padding-block-end: 5rem;
 
   h1 {
     font-size: 3.5rem;
-    color: var(--primary);
+    color: var(--secondary);
+    font-weight: 500;
   }
 
   h2 {
-    color: #DAB15F;
+    color: var(--secondary);
     font-size: 3.125rem;
     font-weight: 400;
+  }
+
+  h3 {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 500;
   }
 
   p, li {
