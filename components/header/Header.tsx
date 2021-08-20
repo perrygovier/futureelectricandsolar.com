@@ -15,7 +15,11 @@ export default function Header({nav, social}) {
     <header className={styles.header}>
       <ResponsiveContainer As="nav">
         <div className={styles.logoWrapper}>
-          <Image src="/img/future-electric-and-solar.png" width={242} height={150}/>
+          <Link href='/'>
+            <a>
+              <Image src="/img/future-electric-and-solar.png" width={242} height={150}/>
+            </a>
+          </Link>
         </div>
         <ul className={styles.primaryNav}>
           {nav.map(navItem => (
